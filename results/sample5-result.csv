@@ -1,0 +1,5 @@
+best,"[4, [], ['better', 'middling', 'worse', 'good']]"
+better,"[3, ['best'], ['middling', 'worse', 'good']]"
+good,"[2, ['better', 'best'], ['middling', 'worse']]"
+middling,"[1, ['better', 'best', 'good'], ['worse']]"
+worse,"[0, ['better', 'middling', 'best', 'good'], []]"
