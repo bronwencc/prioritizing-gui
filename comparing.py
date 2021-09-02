@@ -1,3 +1,4 @@
+# Code copyright 2021 by Github user bronwencc
 #methods to compare lists and make logical inferences
 
 #pick the non-empty above list to compare to the other's below list

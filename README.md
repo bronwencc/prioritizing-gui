@@ -23,6 +23,11 @@ This contains a function `comparelists` to find items in common between two list
 #### `combine.py`
 This contains the function `combos` which uses `itertools.combinations` to return a list of combinations of the given size (or defaults to 2) from a given array-like.
 
+### Other files
+* The how-to-get_one_choice text file that contains instructions for adding the get_one_choice method to the EasyGUI_Qt source code. The method itself is also in the file and it creates a message box with two buttons labeled with given text (arg *choices*), returning the text on the button that was selected.
+* This README.
+* The LICENSE detailing whether derivative works may be made, whether credit should be given, etc.
+
 ### Folders
 #### item-lists
 This folder is where sample priority-ranking input data is stored.
