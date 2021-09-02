@@ -53,32 +53,32 @@ def main():
                 relation = comparing.infer(info0,info1)
                 
                 if relation == None: #ask user for input on comparison
-                    best_option = eg.get_one_choice(choices = combo) #may at some point return only the index number instead of complete text from combo directly
+                    chosen_option = eg.get_one_choice(choices = combo) #may at some point return only the index number instead of complete text from combo directly
                     #and then would rely on using the index number to get the item name/string
-                    if best_option==combo[0]:
+                    if chosen_option==combo[0]:
                         #other_option is set to the other of the pair
                         other_option = combo[1]
-                    elif best_option==combo[1]:
+                    elif chosen_option==combo[1]:
                         other_option = combo[0]
                     else:
                         sys.exit("Exiting program")
 
                 elif relation==True:#then combo[0] should rank higher
-                    best_option = combo[0]
+                    chosen_option = combo[0]
                     other_option = combo[1]
                 else: #relation is False, combo[1] should rank higher
-                    best_option = combo[1]
+                    chosen_option = combo[1]
                     other_option = combo[0]    
                 #get information from datadict
-                total_b,above_b,below_b = datadict[best_option]
+                total_c,above_c,below_c = datadict[chosen_option]
                 total_o,above_o,below_o = datadict[other_option]
-                eg.show_message(f"best {best_option}: {above_b}{below_b} <br> <br> other {other_option}: {above_o}{below_o}")
+                eg.show_message(f"chosen {chosen_option}: {above_c}{below_c} <br> <br> other {other_option}: {above_o}{below_o}")
                 
                 #update datadict appropriately
-                below_b.append(other_option) #other_option ranks below best_option
-                datadict[best_option] = [increm(total_b),above_b,below_b]
+                below_c.append(other_option) #other_option ranks below chosen_option
+                datadict[chosen_option] = [increm(total_c),above_c,below_c]
                 
-                above_o.append(best_option) #best_option ranks above other_option
+                above_o.append(chosen_option) #chosen_option ranks above other_option
                 datadict[other_option] = [total_o,above_o,below_o]
         #end combo frequency loop
         eg.show_message(str(datadict)) #show message box with entire dictionary
