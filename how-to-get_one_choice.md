@@ -1,10 +1,12 @@
-The following code is instructions for using the get_one_choice method which can be added to the easygui_qt.py source file located in the easygui_qt directory or folder where easygui_qt is installed. In miniconda 3, this is ...miniconda3\Lib\site-packages\easygui_qt .
+The following code is instructions for using the `get_one_choice` method which can be added to the easygui_qt.py source file located in the easygui_qt directory or folder where easygui_qt is installed. In miniconda 3, the file path is ...miniconda3\Lib\site-packages\easygui_qt\.
 
-In the __all__ list, add the string: 'get_one_choice'.
+Since you are modifying the easygui_qt code, you should be aware this is done under the same License as [the original](https://github.com/aroberge/easygui_qt/blob/master/LICENSE): a BSD 3-Clause "New" or "Revised" License which allows for modifications. Also, redistribution must retain the copyright notice and the names of the software nor the creators can be used to promote anything without "specific prior written permission".
 
-Then in the #====InputDialogs====# or your preferred section, add the following function:
+First, in the `__all__` list, add the string: 'get_one_choice'.
 
-def get_one_choice(message="Select one item", title="Pick one", choices=None):
+Then in the #====InputDialogs====# or your preferred message box section, copy-paste the following function:
+
+```def get_one_choice(message="Select one item", title="Pick one", choices=None):
     """Simple dialog to ask a user to select one of two options by clicking the appropriately labeled button.
 
        :param message: Message displayed to the user in the box
@@ -24,8 +26,9 @@ def get_one_choice(message="Select one item", title="Pick one", choices=None):
     app = SimpleApp()
 
     #creates a QMessageBox with no icon (an icon would be a warning or question mark)
-    #and with the given or default title and message text
+    #and with the title and message text
     box = qt_widgets.QMessageBox(qt_widgets.QMessageBox.NoIcon, title, message, qt_widgets.QMessageBox.NoButton)
+    
     #"Accept" button and "Reject" button are added, labeled with the text from choices
     #Underlying the buttons are AcceptRole (first item in choices) and RejectRole buttons (second item in choices)
     box.addButton(choices[0], qt_widgets.QMessageBox.AcceptRole)
@@ -42,4 +45,4 @@ def get_one_choice(message="Select one item", title="Pick one", choices=None):
     elif reply == qt_widgets.QMessageBox.AcceptRole:
         return choices[0]
     else:
-        return choices[1]
+        return choices[1]```
