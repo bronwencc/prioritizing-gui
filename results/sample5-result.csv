@@ -1,5 +1,6 @@
-best,"[4, [], ['better', 'middling', 'worse', 'good']]"
-better,"[3, ['best'], ['middling', 'worse', 'good']]"
-good,"[2, ['better', 'best'], ['middling', 'worse']]"
-middling,"[1, ['better', 'best', 'good'], ['worse']]"
-worse,"[0, ['better', 'middling', 'best', 'good'], []]"
+Index,Items,Total,Above,Below
+2,best,4,[],"['better', 'middling', 'worse', 'good']"
+0,better,3,['best'],"['middling', 'worse', 'good']"
+4,good,2,"['better', 'best']","['middling', 'worse']"
+1,middling,1,"['better', 'best', 'good']",['worse']
+3,worse,0,"['better', 'middling', 'best', 'good']",[]

@@ -1,9 +1,8 @@
 # Code copyright 2021 by Github user bronwencc
 #import python packages
 import easygui_qt as eg
-import csv
-import numpy as np
 import os, sys
+import pandas as pd
 
 #code in this repository:
 import file_ops
@@ -85,9 +84,19 @@ def main():
         
         file_ops.savelist(datadict.keys()) #write datadict keys to csv file
         
-        #put keys in list in order based on totals (highest value first)
-        sortedlist = sorted(datadict.items(), key = lambda keyval: keyval[1][0], reverse=True)
-        file_ops.savecsv(sortedlist)#write sortedlist of datadict items to file
+        #convert to pandas DataFrame
+        tempdf = pd.DataFrame(data=datadict)
+        datadf = tempdf.T #now index is the item names
+        datadf.reset_index(inplace=True) #reset index to be numbers, item names become a column
+        coldict = {"index":"Items",0:"Total",1:"Above",2:"Below"}
+        datadf.rename(columns=coldict, inplace=True) #rename columns
+        #sort by Total, from highest to lowest
+        datadf.sort_values("Total",inplace=True,ascending=False)
+        #save datadf as CSV
+        savefile, filetype = eg.get_save_file_name()
+        if savefile == None: #file-picker was closed or canceled
+            sys.exit("Item ranking not saved. Exiting program")
+        datadf.to_csv(savefile,index_label="Index")
         
 # main function call
 if __name__=="__main__":     
